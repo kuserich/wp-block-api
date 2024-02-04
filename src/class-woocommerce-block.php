@@ -7,17 +7,15 @@
  * implementation from `Block`, this class implements a check to
  * conditionally register blocks only if WooCommerce is installed.
  *
- * @link          https://sixa.ch
- * @author        sixa AG
+ * @link          https://goeckeritz.xyz
+ * @author        kuserich
  * @since         1.0.0
  *
- * @package       Sixa_Blocks
- * @subpackage    Sixa_Blocks\WooCommerce_Block
+ * @package       Kuserich
+ * @subpackage    Kuserich\WooCommerce_Block
  */
 
-namespace Sixa_Blocks;
-
-use Sixa_Snippets\Includes\Utils;
+namespace Kuserich;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -52,7 +50,6 @@ if ( ! class_exists( WooCommerce_Block::class ) ) :
 			// Initialize the block from the parent function.
 			parent::init();
 		}
-
 	}
 
 endif;

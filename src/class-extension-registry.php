@@ -5,15 +5,15 @@
  * This class is used to register extensions and retrieve all registered extensions
  * subsequently to enqueue extension assets.
  *
- * @link          https://sixa.ch
- * @author        sixa AG
+ * @link          https://goeckeritz.xyz
+ * @author        kuserich
  * @since         1.0.0
  *
- * @package       Sixa_Blocks
- * @subpackage    Sixa_Blocks/Extension_Registry
+ * @package       Kuserich
+ * @subpackage    Kuserich/Extension_Registry
  */
 
-namespace Sixa_Blocks;
+namespace Kuserich;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -55,7 +55,6 @@ if ( ! class_exists( Extension_Registry::class ) ) :
 		 * @return    void
 		 */
 		public function register( array $extension ): void {
-			// TODO: add _doing_it_wrong or WP_Error here if $extension is ill-defined?
 			$this->registered_extensions[ $extension['name'] ] = $extension;
 		}
 

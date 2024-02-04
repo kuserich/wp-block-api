@@ -18,7 +18,7 @@ on your computer in order to build and use this package.
 * Import `vendor/autoload.php` in your project
 
 ```bash
-composer require sixach/wp-block-api
+composer require kuserich/wp-block-api
 ```
 
 ---
@@ -30,7 +30,7 @@ Simply extend the block or extension class that fits the requirements of your pa
 and extend all relevant interfaces (for extensions):
 
 ```PHP
-namespace Sixa_Blocks;
+namespace Kuserich;
 
 final class My_Block extends Block {
 
@@ -42,7 +42,7 @@ final class My_Block extends Block {
 ```
 
 ```PHP
-namespace Sixa_Blocks;
+namespace Kuserich;
 
 final class My_Extension extends Extension {
 
@@ -53,7 +53,7 @@ final class My_Extension extends Extension {
 }
 ```
 
-Development and usage is simplified if all blocks and extensions use `namespace Sixa_Blocks`.
+Development and usage is simplified if all blocks and extensions use `namespace Kuserich`.
 
 ### Create an `extension.json`
 
@@ -64,7 +64,7 @@ Example:
 
 ```JSON
 {
-	"name": "sixa-wp-extension-awesome-feature",
+	"name": "wp-extension-awesome-feature",
 	"frontendScript": "file:./build/script.js",
 	"frontendStyle": "file:./build/style.css",
 	"script": "file:./build/both.js",
@@ -72,7 +72,7 @@ Example:
 	"editorScript": "file:./build/index.js",
 	"editorStyle": "file:./build/index.css",
 	"requires": [
-		"sixa/add-to-cart"
+		"kuserich/add-to-cart"
 	]
 }
 ```
@@ -125,17 +125,17 @@ To run your block or extension as a standalone plugin, simply create a plugin fi
  * My Block.
  *
  * @wordpress-plugin
- * Plugin Name:          Sixa - My Block
+ * Plugin Name:          My Block
  * Description:          My block for WordPress editor.
  * Version:              1.0.0
  * Requires at least:    5.7
  * Requires PHP:         7.2
- * Author:               sixa AG
+ * Author:               kuserich
  * License:              GPL v3 or later
  * License URI:          https://www.gnu.org/licenses/gpl-3.0.html
- * Text Domain:          sixa
+ * Text Domain:          my-awesome-block
  *
- * @package              sixa
+ * @package              Kuserich
  */
 
 defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
@@ -143,7 +143,7 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 /**
  * Include the namespace of this block.
  */
-use Sixa_Blocks\My_Block;
+use Kuserich\My_Block;
 
 /**
  * Composer autoload is needed in this package even if
@@ -171,7 +171,7 @@ somewhere in your project.
 Next, simply call the `init` function:
 
 ```PHP
-Sixa_Blocks\My_Block::init();
+Kuserich\My_Block::init();
 ```
 
 Notice that there is no need to defer the `init` call to any WordPress hook in your project.
@@ -186,17 +186,17 @@ how we intend them to be used.
 ## Abstract Class Block
 
 A simple block class that includes the default implementation of a block class.
-Particularly, `Sixa_Blocks\Block` includes and performs block initialization
-and adds `Sixa_Blocks\Block::register()` to the WordPress action hook `init`.
+Particularly, `Kuserich\Block` includes and performs block initialization
+and adds `Kuserich\Block::register()` to the WordPress action hook `init`.
 
-`Sixa_Blocks\Block::register()` is not implemented. In its most basic form, a
+`Kuserich\Block::register()` is not implemented. In its most basic form, a
 simple block only needs to implement this function and perform `register_block_type_from_metadata`
 according to the block requirements.
 
 ### Basic Example
 
 ```PHP
-namespace Sixa_Blocks;
+namespace Kuserich;
 
 final class My_Basic_Block extends Block {
 
@@ -213,7 +213,7 @@ directory in the root of the project (i.e. not inside the same directory as `blo
 ### Intermediate Example
 
 ```PHP
-namespace Sixa_Blocks;
+namespace Kuserich;
 
 final class My_Block extends Block {
 
@@ -239,25 +239,25 @@ final class My_Block extends Block {
 
 ## Abstract Class WooCommerce Block
 
-A simple block class that extends `Sixa_Blocks\Block` with a few additional convenience
+A simple block class that extends `Kuserich\Block` with a few additional convenience
 functions to enable WooCommerce specific block initialization.
 Particularly, for a set of WooCommerce blocks (i.e. blocks that require WooCommerce), 
 initialization and registration of the block is only necessary if WooCommerce is also installed.
 In some cases the block might even produce a fatal error if WooCommerce is not activated.
 
 For these instances, we intend to skip block registration.
-`Sixa_Blocks\WooCommerce_Block` extends `Sixa_Blocks\Block` with a simple check in
-`Sixa_Blocks\WooCommerce_Block::init()` that prevents the block from being registered 
-(i.e. `Sixa_Blocks\Block::register()` from being added in `init`) if WooCommerce is not installed
+`Kuserich\WooCommerce_Block` extends `Kuserich\Block` with a simple check in
+`Kuserich\WooCommerce_Block::init()` that prevents the block from being registered 
+(i.e. `Kuserich\Block::register()` from being added in `init`) if WooCommerce is not installed
 and activated.
 
-Other than that, `Sixa_Blocks\WooCommerce_Block` is identical to `Sixa_Blocks\Block`.
+Other than that, `Kuserich\WooCommerce_Block` is identical to `Kuserich\Block`.
 
 
 ### Basic Example
 
 ```PHP
-namespace Sixa_Blocks;
+namespace Kuserich;
 
 final class My_WooCommerce_Block extends WooCommerce_Block {
 
@@ -268,23 +268,23 @@ final class My_WooCommerce_Block extends WooCommerce_Block {
 }
 ```
 
-`Sixa_Blocks\My_WooCommerce_Block::register()` is automatically **not** called if 
+`Kuserich\My_WooCommerce_Block::register()` is automatically **not** called if 
 WooCommerce is not installed.
 
 ## Abstract Class Extension
 
 A simple extension class that includes the default implementation of an extension. Particularly,
-`Sixa_Blocks\Extension` includes and performs block initialization and adds 
-`Sixa_Blocks\Extension::register()` to the WordPress action hook `init`.
+`Kuserich\Extension` includes and performs block initialization and adds 
+`Kuserich\Extension::register()` to the WordPress action hook `init`.
 
-`Sixa_Blocks\Extension::register()` is not implemented. In its most basic form, a
+`Kuserich\Extension::register()` is not implemented. In its most basic form, a
 simple block only needs to implement this function and perform 
-`Sixa_Blocks\Functions::register_extension_from_metadata` according to the  extension requirements.
+`Kuserich\Functions::register_extension_from_metadata` according to the  extension requirements.
 
 ### Basic Example
 
 ```PHP
-namespace Sixa_Blocks;
+namespace Kuserich;
 
 final class My_Extension extends Extension {
 

@@ -1,5 +1,5 @@
 {
-	"name": "sixach/wp-block-api",
+	"name": "kuserich/wp-block-api",
 	"type": "library",
 	"description": "Small collection of helpful interfaces and classes for the development of WordPress Blocks and Extensions.",
 	"keywords": [
@@ -7,31 +7,35 @@
 		"composer",
 		"library"
 	],
-	"homepage": "https://www.sixa.ch",
+	"homepage": "https://www.goeckeritz.xyz",
 	"license": "GPL-3.0",
 	"authors": [
 		{
-			"name": "sixa AG",
-			"homepage": "https://sixa.ch"
+			"name": "Markus Göckeritz",
+			"homepage": "https://goeckeritz.xyz"
 		}
 	],
 	"require": {
-		"php": ">=7.4",
-		"sixach/wp-snippets": "^1.7.2"
+		"php": ">=8.1"
 	},
 	"require-dev": {
-		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
-		"wp-coding-standards/wpcs": "^2.3.0",
-		"phpunit/phpunit": "^7",
-		"phpcompatibility/phpcompatibility-wp": "^2.1",
-		"php-parallel-lint/php-parallel-lint": "^1.2.0"
+		"dealerdirect/phpcodesniffer-composer-installer": "^v1.0.0",
+		"wp-coding-standards/wpcs": "^3.0.1",
+		"phpunit/phpunit": "^8.1.0",
+		"phpcompatibility/phpcompatibility-wp": "^2.1.4",
+		"php-parallel-lint/php-parallel-lint": "^v1.3.2"
 	},
 	"scripts": {
-		"lint:wpcs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --runtime-set testVersion 7.4-",
-		"lint:wpcbf": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --runtime-set testVersion 7.4-",
+		"lint:wpcs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --runtime-set testVersion 8.1-",
+		"lint:wpcbf": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --runtime-set testVersion 8.1-",
 		"lint:php": "@php ./vendor/bin/parallel-lint --exclude .git --exclude vendor --exclude node_modules ."
 	},
 	"autoload": {
 		"classmap": ["src"]
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
 	}
 }

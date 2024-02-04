@@ -9,15 +9,15 @@
  *
  * @see           https://github.com/WordPress/WordPress/blob/5.8-branch/wp-includes/blocks.php#L193
  *
- * @link          https://sixa.ch
- * @author        sixa AG
+ * @link          https://goeckeritz.xyz
+ * @author        kuserich
  * @since         1.0.0
  *
- * @package       Sixa_Blocks
- * @subpackage    Sixa_Blocks/Extension_Registry
+ * @package       Kuserich
+ * @subpackage    Kuserich/Extension_Registry
  */
 
-namespace Sixa_Blocks;
+namespace Kuserich;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -122,7 +122,7 @@ if ( ! class_exists( Functions::class ) ) :
 		 * @since     1.0.0
 		 * @param     array  $metadata    The extracted and extended metadata for the current extension.
 		 * @param     string $type        The type (frontend, editor, both) of asset that is being registered.
-		 *                                The value passed is a value from `Sixa_Blocks\Asset_Type`.
+		 *                                The value passed is a value from `Kuserich\Asset_Type`.
 		 * @return    string                 The handle under which the script is registered.
 		 */
 		private static function register_extension_script_handle( array $metadata, string $type ): string {
@@ -143,15 +143,13 @@ if ( ! class_exists( Functions::class ) ) :
 				$handle,
 				plugins_url( $path, $metadata['file'] ),
 				$asset_meta['dependencies'],
-				$asset_meta['version']
+				$asset_meta['version'],
 			);
 
 			// Bail early if the script could not be registered.
 			if ( ! $result ) {
 				return '';
 			}
-
-			// TODO: do we need to add `wp_set_script_translations`?
 
 			return $handle;
 		}
@@ -162,7 +160,7 @@ if ( ! class_exists( Functions::class ) ) :
 		 * @since     1.0.0
 		 * @param     array  $metadata    The extracted and extended metadata for the current extension.
 		 * @param     string $type        The type (frontend, editor, both) of asset that is being registered.
-		 *                                The value passed is a value from `Sixa_Blocks\Asset_Type`.
+		 *                                The value passed is a value from `Kuserich\Asset_Type`.
 		 * @return    string                 The handle under which the script is registered.
 		 */
 		private static function register_extension_style_handle( array $metadata, string $type ): string {
@@ -197,7 +195,7 @@ if ( ! class_exists( Functions::class ) ) :
 		 *
 		 * This function must be called at least once anywhere during the loading process (before
 		 * the enqueue hooks). Otherwise assets are not loaded. Currently this is handled by
-		 * `Sixa_Blocks\Extension_Registry::get_instance()`.
+		 * `Kuserich\Extension_Registry::get_instance()`.
 		 *
 		 * @see       Extension_Registry::get_instance()
 		 * @since     1.0.0
@@ -261,7 +259,7 @@ if ( ! class_exists( Functions::class ) ) :
 		 *
 		 * @since     1.0.0
 		 * @param     string $type    Type of the asset (frontend, editor, both).
-		 *                            Type is a value from `Sixa_Blocks\Asset_Type`.
+		 *                            Type is a value from `Kuserich\Asset_Type`.
 		 * @return    void
 		 */
 		private static function enqueue_scripts_by_type( string $type ): void {
@@ -278,7 +276,7 @@ if ( ! class_exists( Functions::class ) ) :
 		 *
 		 * @since     1.0.0
 		 * @param     string $type    Type of the asset (frontend, editor, both).
-		 *                            Type is a value from `Sixa_Blocks\Asset_Type`.
+		 *                            Type is a value from `Kuserich\Asset_Type`.
 		 * @return    void
 		 */
 		private static function enqueue_styles_by_type( string $type ): void {
@@ -300,7 +298,7 @@ if ( ! class_exists( Functions::class ) ) :
 		 * @param     string $file_or_folder       Path to `extension.json` file or path to the
 		 *                                         directory containing an `extension.json` file.
 		 * @param     string $metadata_filename    Name of the configuration file.
-		 *                                         Defaults to `Sixa_Blocks\Functions::METADATA_FILE_NAME`.
+		 *                                         Defaults to `Kuserich\Functions::METADATA_FILE_NAME`.
 		 * @return    string                          Path to `extension.json` file.
 		 */
 		private static function get_metadata_file_path_from_file_or_folder( string $file_or_folder, string $metadata_filename = self::METADATA_FILE_NAME ): string {
@@ -315,7 +313,7 @@ if ( ! class_exists( Functions::class ) ) :
 		 *
 		 * @since     1.0.0
 		 * @param     string $path      Path to `extension.json` possibly containing a file prefix.
-		 * @param     string $prefix    Prefix to clean. Defaults to `Sixa_Blocks\Functions::PATH_PREFIX`.
+		 * @param     string $prefix    Prefix to clean. Defaults to `Kuserich\Functions::PATH_PREFIX`.
 		 * @return    string               Clean file path.
 		 */
 		private static function remove_path_prefix( string $path, string $prefix = self::PATH_PREFIX ): string {
@@ -332,7 +330,7 @@ if ( ! class_exists( Functions::class ) ) :
 		 *
 		 * @since     1.0.0
 		 * @param     string $name    Name of the extension.
-		 * @param     string $type    Type of the asset. Type is a value from `Sixa_Blocks\Asset_Type`.
+		 * @param     string $type    Type of the asset. Type is a value from `Kuserich\Asset_Type`.
 		 * @return    string             Asset handle.
 		 */
 		private static function build_asset_handle( string $name, string $type ): string {
@@ -346,7 +344,7 @@ if ( ! class_exists( Functions::class ) ) :
 		 *
 		 * @since     1.0.0
 		 * @param     array  $metadata    Extension metadata.
-		 * @param     string $type        Type of the asset. Type is a value from `Sixa_Blocks\Asset_Type`.
+		 * @param     string $type        Type of the asset. Type is a value from `Kuserich\Asset_Type`.
 		 * @return    array                  Asset metadata.
 		 */
 		private static function get_asset_meta( array $metadata, string $type ): array {
@@ -366,7 +364,7 @@ if ( ! class_exists( Functions::class ) ) :
 		 *
 		 * @since     1.0.0
 		 * @param     array  $metadata    Extension metadata.
-		 * @param     string $type        Type of the asset. Type is a value from `Sixa_Blocks\Asset_Type`.
+		 * @param     string $type        Type of the asset. Type is a value from `Kuserich\Asset_Type`.
 		 * @return    string                 Path to the asset metadata file.
 		 */
 		private static function get_asset_meta_path( $metadata, $type ): string {
@@ -381,7 +379,7 @@ if ( ! class_exists( Functions::class ) ) :
 		 *
 		 * @since     1.0.0
 		 * @param     array  $metadata    Extension metadata.
-		 * @param     string $type        Type of the asset. Type is a value from `Sixa_Blocks\Asset_Type`.
+		 * @param     string $type        Type of the asset. Type is a value from `Kuserich\Asset_Type`.
 		 * @return    string                 Path to the asset file of given type.
 		 */
 		private static function get_full_asset_path( array $metadata, string $type ): string {
@@ -400,7 +398,6 @@ if ( ! class_exists( Functions::class ) ) :
 		private static function get_full_path_for_file( $metadata, $file ): string {
 			return realpath( sprintf( '%s%s', trailingslashit( dirname( $metadata['file'] ) ), $file ) );
 		}
-
 	}
 
 endif;

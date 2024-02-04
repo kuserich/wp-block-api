@@ -14,15 +14,15 @@
  *     `frontendStyle`   -->  frontend
  *     `frontendScript`  -->  frontend
  *
- * @link          https://sixa.ch
- * @author        sixa AG
+ * @link          https://goeckeritz.xyz
+ * @author        kuserich
  * @since         1.0.0
  *
- * @package       Sixa_Blocks
- * @subpackage    Sixa_Blocks/Asset_Type
+ * @package       Kuserich
+ * @subpackage    Kuserich/Asset_Type
  */
 
-namespace Sixa_Blocks;
+namespace Kuserich;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -100,7 +100,6 @@ if ( ! class_exists( Asset_Type::class ) ) :
 			self::FRONTEND_SCRIPT => 'frontend-script',
 			self::FRONTEND_STYLE  => 'frontend-style',
 		);
-
 	}
 
 endif;

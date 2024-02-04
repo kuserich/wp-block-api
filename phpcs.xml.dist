@@ -49,7 +49,7 @@
          Multiple valid text domains can be provided as a comma-delimited list. -->
     <rule ref="WordPress.WP.I18n">
         <properties>
-            <property name="text_domain" type="array" value="sixa" />
+            <property name="text_domain" type="array" value="kuserich" />
         </properties>
     </rule>
     <!-- Set the minimum supported WP version. This is used by several sniffs.
@@ -76,7 +76,7 @@
     <rule ref="WordPress.NamingConventions.PrefixAllGlobals">
         <properties>
             <property name="prefixes" type="array">
-                <element value="sixa" />
+                <element value="kuserich" />
             </property>
         </properties>
     </rule>

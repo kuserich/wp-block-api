@@ -8,15 +8,15 @@
  * function to the `init` WordPress hook. The registration function
  * registers the block following the Gutenberg block registration API.
  *
- * @link          https://sixa.ch
- * @author        sixa AG
+ * @link          https://goeckeritz.xyz
+ * @author        kuserich
  * @since         1.0.0
  *
- * @package       Sixa_Blocks
- * @subpackage    Sixa_Blocks\Block
+ * @package       Kuserich
+ * @subpackage    Kuserich\Block
  */
 
-namespace Sixa_Blocks;
+namespace Kuserich;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -67,7 +67,6 @@ if ( ! class_exists( Block::class ) ) :
 		 * @return    void
 		 */
 		abstract public static function register(): void;
-
 	}
 
 endif;
